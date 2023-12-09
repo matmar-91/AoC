@@ -1,4 +1,4 @@
-import fs, { lchmod } from "fs";
+import fs from "fs";
 
 class Node {
   constructor(label, left = null, right = null) {
