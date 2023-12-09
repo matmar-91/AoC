@@ -10,8 +10,8 @@ const reader = createInterface({
 
 reader.on("line", (line) => {
   const numbers = line.split(" ").map((number) => Number.parseInt(number));
-  part1([...numbers]);
-  part2([...numbers]);
+  sum1 += solve([...numbers]);
+  sum2 += solve([...numbers].reverse());
 });
 
 reader.on("close", () => {
@@ -20,7 +20,7 @@ reader.on("close", () => {
   console.timeEnd("test");
 });
 
-const part1 = function (numbers) {
+function solve(numbers) {
   const lastNumbers = [];
   while (undefined !== numbers.find((n) => n !== 0)) {
     let tmp = [];
@@ -31,19 +31,5 @@ const part1 = function (numbers) {
     numbers = tmp;
   }
 
-  sum1 += lastNumbers.reduce((a, b) => a + b);
-};
-
-const part2 = function (numbers) {
-  const firstNumbers = [];
-  while (undefined !== numbers.find((n) => n !== 0)) {
-    let tmp = [];
-    for (let i = 0; i < numbers.length - 1; i++) {
-      tmp.push(numbers[i + 1] - numbers[i]);
-    }
-    firstNumbers.unshift(numbers.shift());
-    numbers = tmp;
-  }
-
-  sum2 += firstNumbers.reduce((a, b) => b - a);
-};
+  return lastNumbers.reduce((a, b) => a + b);
+}
