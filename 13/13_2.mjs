@@ -1,6 +1,6 @@
 import fs from "fs";
 
-// A little messy code but requirements wasn't clear to me.
+// A little messy code but requirements for part 2 wasn't clear to me.
 // I struggled mostly with understanding what should be actually done here
 // Probably could be refactored, but at least it's working...
 
